@@ -42,6 +42,19 @@ class TestLibrarySprint2(unittest.TestCase):
             "Available"
         )
 
+class TestLibrarySprint3(unittest.TestCase):
+
+    def setUp(self):
+        self.library = Library()
+        self.library.add_book("B003", "Design Patterns", "GoF")
+
+    def test_report_contains_header(self):
+        report = self.library.generate_report()
+        self.assertIn("Book ID | Title | Author | Status", report)
+
+    def test_report_contains_book_entry(self):
+        report = self.library.generate_report()
+        self.assertIn("B003", report)
 
 
 if __name__ == "__main__":
